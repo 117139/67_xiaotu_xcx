@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index1/index1",
+    "pages/index/index",
+    "pages/new_html/new_html"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "小兔保",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}
