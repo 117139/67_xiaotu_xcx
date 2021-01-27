@@ -4,11 +4,12 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false
+    "urlCheck": false,
+    "minified": true
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "touristappid",
+  "appid": "wxf01c3b6a2179e2b4",
   "projectname": "67_xiaotu_xcx",
   "condition": {
     "search": {

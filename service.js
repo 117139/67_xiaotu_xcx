@@ -6,8 +6,8 @@ const USERS_KEY = 'USERS_KEY';
 const STATE_KEY = 'STATE_KEY';
 // const IPurl = 'https://datixcx.com.aa.800123456.top/api/';
 // const imgurl = 'https://datixcx.com.aa.800123456.top/';
-const imgurl = 'http://192.168.129.246/';
-const IPurl=imgurl+'api/'
+const imgurl = 'https://www.xiaotubaoxian.com/';
+const IPurl=imgurl+''
 // const IPurl='http://192.168.129.246/api/'
 // const adminurl='https://datixcx.com.aa.800123456.top/admin/';
 // appid:wx4c41cc50c5a53df9
@@ -548,7 +548,7 @@ const getUrl = (url)=>{
  
 
 // get方法
-const P_get = (url, param = {}) => {
+const P_get = (url, param = {},header) => {
 		if(!param.load_mode){
 			wx.showLoading({
 			  title: '请求中，请耐心等待...',
@@ -557,15 +557,17 @@ const P_get = (url, param = {}) => {
     return http({
         url,
         param,
-				method: 'GET'
+				method: 'GET',
+				header
     })
 }
 
-const P_post = (url, param = {}) => {
+const P_post = (url, param = {},header) => {
     return http({
         url,
         param,
-        method: "POST"
+        method: "POST",
+				header
     })
 }
 

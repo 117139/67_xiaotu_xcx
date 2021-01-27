@@ -8,6 +8,7 @@ const store = new Vuex.Store({
 		/**
 		 * 是否需要强制登录
 		 */
+		
 		forcedLogin: false,
 		hasLogin: false,
 		platform:'',
@@ -16,7 +17,8 @@ const store = new Vuex.Store({
 				avatarurl:'http://51daiyan.test.upcdn.net/resource/api/img/20200716/3eb26483a34058663c1adf01cf90901d.png',
 				nickname:'刘明',
 				tel:'1786352362',
-				gs:'智慧家物联网科技有限公司'
+				gs:'智慧家物联网科技有限公司',
+				openId:'123456',
 			
 		},
 		company:'',
@@ -28,12 +30,7 @@ const store = new Vuex.Store({
 		
 		
 		
-		new_xz:[],    //批量操作
-		new_problem:'' ,//新问题
-		ls_prodata:'',
-		ls_pro_yh:'',
-		fj_data:'',
-		bj_prodata:'',
+		pageSize:20,
 		
 		
 		
@@ -42,44 +39,6 @@ const store = new Vuex.Store({
 		xcx_status:1,     //0 商家端  1 用户端  2智能安装端
 	},
 	mutations: {
-		set_xcx(state, xcx_status){
-			var tip_text='正在切换至'
-			if(xcx_status==0){
-				if(state.loginDatas.is_seller!=1){
-					uni.showToast({
-						icon:'none',
-						title: '暂无权限'
-					});
-					return
-				}
-				tip_text+='商家端'
-			}
-			if(xcx_status==1){
-				if(state.loginDatas.is_owner!=1){
-					uni.showToast({
-						icon:'none',
-						title: '暂无权限'
-					});
-					return
-				}
-				tip_text+='用户端'
-			}
-			if(xcx_status==2){
-				if(state.loginDatas.is_engineer!=1){
-					uni.showToast({
-						icon:'none',
-						title: '暂无权限'
-					});
-					return
-				}
-				tip_text+='智能安装端'
-			}
-			uni.showToast({
-				icon:'none',
-				title:tip_text
-			})
-			state.xcx_status = xcx_status || 0;
-		},
 		login(state, userName) {
 			state.userName = userName || '新用户';
 			state.hasLogin = true;

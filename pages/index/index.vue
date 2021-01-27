@@ -6,8 +6,8 @@
 				<view>Hi~ 欢迎使用小兔保</view>
 			</view>
 			<view class="main_box dis_flex">
-				<view><image src="../../static/images/xiaotujingxuan_06.jpg" mode="aspectFill"></image></view>
-				<view @tap="jump" data-url="/pages/index1/index1"><image src="../../static/images/xiaotujingxuan_08.jpg" mode="aspectFill"></image></view>
+				<view  @tap="jump"  data-url="/pages/choose/choose"><image src="../../static/images/xiaotujingxuan_06.jpg" mode="aspectFill"></image></view>
+				<view @tap="jump" data-url="/pages/index1/index1"><image src="/static/images/xiaotujingxuan_08.jpg" mode="aspectFill"></image></view>
 				<view><image src="../../static/images/xiaotujingxuan_11.jpg" mode="aspectFill"></image></view>
 				<view><image src="../../static/images/xiaotujingxuan_12.jpg" mode="aspectFill"></image></view>
 			</view>
@@ -33,7 +33,17 @@
 			...mapState(['hasLogin', 'forcedLogin', 'userName', 'loginDatas']),
 		},
 		onLoad() {
-
+			plus.device.getInfo({
+					success:function(e){
+							console.log('getDeviceInfo success: '+JSON.stringify(e));
+							console.log('uuid: '+JSON.stringify(e.uuid));
+							that.setuuid(e.uuid)
+							that.uuid1=e.uuid
+					},
+					fail:function(e){
+							console.log('getDeviceInfo failed: '+JSON.stringify(e));
+					}
+			});
 		},
 		onShareAppMessage() {
 			

@@ -1,1 +1,1 @@
-<view><web-view src></web-view></view>
+<view class="minh100"><web-view src="{{src}}"></web-view></view>

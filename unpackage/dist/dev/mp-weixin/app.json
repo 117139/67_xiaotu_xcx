@@ -1,15 +1,39 @@
 {
   "pages": [
+    "pages/choose/choose",
+    "pages/nameSearch/nameSearch",
     "pages/index1/index1",
     "pages/index/index",
     "pages/new_html/new_html"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "pagesA",
+      "pages": [
+        "xxx/xxx",
+        "xtcpk_index/xtcpk_index",
+        "compare/compare",
+        "cp_detail/cp_detail",
+        "compareDetail/compareDetail",
+        "explain/explain",
+        "collect/collect",
+        "contentSearch/contentSearch"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "小兔保",
     "navigationBarBackgroundColor": "#fff",
     "backgroundColor": "#F8F8F8"
+  },
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": [
+        "pagesA"
+      ]
+    }
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"

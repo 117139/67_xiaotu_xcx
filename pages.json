@@ -1,6 +1,20 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/choose/choose",
+			"style": {
+				"navigationBarTitleText": "选择搜索方式",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/nameSearch/nameSearch",
+			"style": {
+				"navigationBarTitleText": "按名称搜素",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
 			"path": "pages/index1/index1",
 			"style": {
 				"navigationBarTitleText": "小兔保"
@@ -8,21 +22,89 @@
 		}, {
 			"path": "pages/index/index",
 			"style": {
+				"navigationBarTitleText": "小兔保",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		{
+			"path": "pages/new_html/new_html",
+			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
 
 		}
-	    ,{
-            "path" : "pages/new_html/new_html",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
+	"subPackages": [{
+		"root": "pagesA",
+		"pages": [{
+			"path": "xxx/xxx",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "xtcpk_index/xtcpk_index",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "compare/compare",
+			"style": {
+				"navigationBarTitleText": "对比",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "cp_detail/cp_detail",
+			"style": {
+				"navigationBarTitleText": "产品详情",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "compareDetail/compareDetail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "explain/explain",
+			"style": {
+				"navigationBarTitleText": "使用说明",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "collect/collect",
+			"style": {
+				"navigationBarTitleText": "我的收藏",
+				"enablePullDownRefresh": false
+			}
+
+		}    ,{
+                    "path" : "contentSearch/contentSearch",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+	}],
+	"preloadRule": {
+		"pages/index/index": {
+			"network": "all",
+			"packages": ["pagesA"]
+		}
+
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "小兔保",

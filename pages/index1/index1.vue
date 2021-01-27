@@ -14,7 +14,6 @@
 					<text @tap="getCate(3)" :class="active==3?'cur':''">意外险</text>
 					<text @tap="getCate(4)" :class="active==4?'cur':''">旅游险</text>
 					<text @tap="getCate(5)" :class="active==5?'cur':''">年金险</text>
-					<text @tap="getCate(6)" :class="active==6?'cur':''">年金险</text>
 				</div>
 			</div>
 			<div class="h_tab_box clearfix boxsiz">
@@ -50,17 +49,17 @@
 
 
 			<view class="h_footer dis_flex ju_a">
-				<view @tap="jump" :data-url="'/pages/new_html/new_html?id='+active">
-					<image src="http://www.xiaotu.top/static/web/images/index2_09.jpg" mode=""></image>
+				<view @tap="jump" data-url="/pages/choose/choose">
+					<image src="/static/images/index2_09.jpg" mode=""></image>
 					
 					<p>产品库</p>
 				</view>
 				<view @tap="jump" :data-url="'/pages/new_html/new_html?id='+active">
-					<image src="http://www.xiaotu.top/static/web/images/index2_11.jpg" mode=""></image>
+					<image src="/static/images/index2_11.jpg" mode=""></image>
 					<p>保单管理</p>
 				</view> 
 				<view @tap="jump" :data-url="'/pages/new_html/new_html?id='+active">
-					<image src="http://www.xiaotu.top/static/web/images/index2_15.jpg" mode=""></image>
+					<image src="/static/images/index2_15.jpg" mode=""></image>
 					<p>保险词条</p>
 				</view>
 			</view>
@@ -95,7 +94,7 @@
 						}
 					},
 					{
-						photo: 'http://www.xiaotu.top/storage/uploads/admin/Goods/20200831/30977d775bfa8893972d636022f91daa.jpeg',
+						photo: 'http://www.xiaotu.top/storage/uploads/admin/Goods/20200403/5912dfa26509613b0efdd6263995b3a8.jpeg',
 						goodsDataValue: {
 							tag_color: '',
 							tag: '',

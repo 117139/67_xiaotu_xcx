@@ -1,0 +1,44 @@
+
+#explain.data-v-a011194a {
+		text-align: center;
+		width: 100%;
+		min-height: 100%;
+		background: rgb(242, 246, 250);
+		/* background: url("../static/img/bg1.png") repeat;
+        background-position-y: top;
+        background-size: 100%; */
+		/* padding-bottom:30px; */
+}
+._h1.data-v-a011194a {
+		margin-top: 15px;
+		font-size: 22px;
+		color: rgb(131, 177, 249);
+		font-weight: 400;
+}
+._h2.data-v-a011194a {
+		font-size: 14px;
+		color: rgb(8, 8, 8);
+		font-weight: 400;
+		line-height: 22px;
+		margin: 20px 10px;
+		text-align: left;
+		letter-spacing: 2px;
+}
+.weight.data-v-a011194a {
+		font-weight: 600;
+}
+.stress.data-v-a011194a {
+		color: rgb(250, 114, 79);
+}
+.blue.data-v-a011194a {
+		color: rgb(55, 55, 248);
+		text-decoration: underline;
+}
+.box.data-v-a011194a {
+		margin: 10px 10px;
+		background: #fff;
+		/* border:1px solid #eee; */
+		box-shadow: 1px 1px 3px #eee;
+		padding: 6px 15px;
+}
+
