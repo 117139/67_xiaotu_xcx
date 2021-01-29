@@ -1,12 +1,22 @@
 {
   "pages": [
-    "pages/choose/choose",
-    "pages/nameSearch/nameSearch",
     "pages/index1/index1",
     "pages/index/index",
-    "pages/new_html/new_html"
+    "pages/choose/choose",
+    "pages/nameSearch/nameSearch",
+    "pages/new_html/new_html",
+    "pages/login/login"
   ],
   "subPackages": [
+    {
+      "root": "pages_fk",
+      "pages": [
+        "search/search",
+        "getResult/getResult",
+        "lexicnDetails/lexicnDetails",
+        "catalogue/catalogue"
+      ]
+    },
     {
       "root": "pagesA",
       "pages": [
@@ -28,10 +38,16 @@
     "backgroundColor": "#F8F8F8"
   },
   "preloadRule": {
-    "pages/index/index": {
+    "pages/choose/choose": {
       "network": "all",
       "packages": [
         "pagesA"
+      ]
+    },
+    "pages/index1/index1": {
+      "network": "all",
+      "packages": [
+        "pages_fk"
       ]
     }
   },

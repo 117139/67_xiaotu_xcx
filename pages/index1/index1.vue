@@ -6,60 +6,79 @@
 		</view>
 		<view v-if="htmlReset==0">
 			<div class="h_top boxsiz">小兔精选</div>
-			<div class="h_tab_box clearfix boxsiz">
-				<div class="h_tab_box1">
-					<text @tap="getCate(0)" :class="active==0?'cur':''">重疾险</text>
-					<text @tap="getCate(1)" :class="active==1?'cur':''">医疗险</text>
-					<text @tap="getCate(2)" :class="active==2?'cur':''">寿险</text>
-					<text @tap="getCate(3)" :class="active==3?'cur':''">意外险</text>
-					<text @tap="getCate(4)" :class="active==4?'cur':''">旅游险</text>
-					<text @tap="getCate(5)" :class="active==5?'cur':''">年金险</text>
-				</div>
-			</div>
-			<div class="h_tab_box clearfix boxsiz">
-				<div class="h_tab_box2">
-					<text id="19" :class="cur==0?'cur':''" @tap="qhcur(0,19,2)">百万医疗</text>
-					<text id="28" :class="cur==1?'cur':''" @tap="qhcur(1,28,2)">防癌险</text>
-				</div>
-			</div>
+			<swiper v-if="datas.banner_switch==1" class="swiper" :indicator-dots="indicatorDots" indicator-color="#FFFFFF" indicator-active-color="#FE9901"
+			 :autoplay="autoplay" :interval="interval" :duration="duration" circular='true'>
+				<swiper-item v-for="(item,idx) in bannerData">
 
-			<div class="h_list clearfix">
-				<div class="h_li  boxsiz" v-for="(item,index) in datas">
-					<div class="li_box dis_flex">
-						<div class="h_li_img" :style="'background-image: url('+item.photo+');'"></div>
-						<div class="flex_1 h_li_msg">
-							<div class="li_type" :style="'background:'+item.goodsDataValue.tag_color+';'">{{item.goodsDataValue.tag}}</div>
-							<div class="d1 oh1">{{item.goodsDataValue.title}}</div>
-							<div class="d2 oh2">{{item.goodsDataValue.trait}}</div>
-							<div class="dis_flex ju_b aic">
-								<div class="dis_flex" style="align-items: baseline;">
-									<span style="color: #FF5655;font-size: 25upx;">￥</span>
-									<span style="color: #FF5655;font-size: 37upx;">{{item.goodsDataValue.price}}</span>
-									<span style="color: #666;font-size: 25upx;">元</span>
-								</div>
-								<div class="li_btn_box dis_flex ju_b">
-									<text @tap="jump" :data-url="'/pages/new_html/new_html?id='+item.goodsDataValue.buy_url">购买</text>
-									<text @tap="jump" :data-url="'/pages/new_html/new_html?id='+item.goodsDataValue.evalua_url">评测</text>
+
+					<image class="swi_img" :src="getimg(item.img)" mode="aspectFill" @tap="jump_web(url)"></image>
+				</swiper-item>
+
+			</swiper>
+			<!-- /首页产品开关 1：开 2：关 -->
+			<block  v-if="datas.product_switch==1">
+				<div class="h_tab_box clearfix boxsiz">
+					<div class="h_tab_box1">
+						<text v-for="(item,index) in cateData" @tap="getCate(index,item.id)" :class="active==index?'cur':''">{{item.name}}</text>
+						<!-- <text @tap="getCate(1)" :class="active==1?'cur':''">医疗险</text>
+						<text @tap="getCate(2)" :class="active==2?'cur':''">寿险</text>
+						<text @tap="getCate(3)" :class="active==3?'cur':''">意外险</text>
+						<text @tap="getCate(4)" :class="active==4?'cur':''">旅游险</text>
+						<text @tap="getCate(5)" :class="active==5?'cur':''">年金险</text> -->
+					</div>
+				</div>
+				<div class="h_tab_box clearfix boxsiz">
+					<div class="h_tab_box2">
+						<text v-for="(item,index) in cateData[active].children" id="19" :class="cur==index?'cur':''" @tap="qhcur(index,item.id,2)">{{item.name}}</text>
+						<!-- <text id="28" :class="cur==1?'cur':''" @tap="qhcur(1,28,2)">防癌险</text> -->
+					</div>
+				</div>
+				
+				<div class="h_list clearfix">
+					<div class="h_li  boxsiz" v-for="(item,index) in goodsData">
+						<div class="li_box dis_flex">
+							<!-- <div class="h_li_img" :style="'background-image: url('+item.photo+');'"></div> -->
+							<image class="h_li_img" :src="getimg(item.photo)" mode="aspectFill"></image>
+							<div class="flex_1 h_li_msg">
+								<div class="li_type" :style="'background:'+item.tag_color+';'">{{item.tag}}</div>
+								<div class="d1 oh1">{{item.title}}</div>
+								<div class="d2 oh2">{{item.trait}}</div>
+								<div class="dis_flex ju_b aic">
+									<div class="dis_flex" style="align-items: baseline;">
+										<span style="color: #FF5655;font-size: 25upx;">￥</span>
+										<span style="color: #FF5655;font-size: 37upx;">{{item.price}}</span>
+										<span style="color: #666;font-size: 25upx;">元</span>
+									</div>
+									<div class="li_btn_box dis_flex ju_b">
+										<text @tap="jump_web(item.buy_url)" :data-url="'/pages/new_html/new_html?id='+item.buy_url">购买</text>
+										<text @tap="jump_web(item.evalua_url)" :data-url="'/pages/new_html/new_html?id='+item.evalua_url">评测</text>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<view v-if="goodsData.length==0" class="zanwu">暂无数据</view>
 				</div>
+				
+			</block>
+			
+			<div v-if="datas.news_switch==1" class="wenti_list">
+				<view v-for="(item,index) in newsData" @tap="jump_web(item.jump_link)" class="wenti_li boxsiz ">
+					<text class="text-cut">{{item.title}}</text>
+				</view>
 			</div>
-
-
-			<view class="h_footer dis_flex ju_a">
+			<view  v-if="datas.bth_switch==1" class="h_footer dis_flex ju_a">
 				<view @tap="jump" data-url="/pages/choose/choose">
-					<image src="/static/images/index2_09.jpg" mode=""></image>
-					
+					<image :src="getimg('/static/images/index2_09.jpg')" mode="aspectFill"></image>
+
 					<p>产品库</p>
 				</view>
 				<view @tap="jump" :data-url="'/pages/new_html/new_html?id='+active">
-					<image src="/static/images/index2_11.jpg" mode=""></image>
+					<image :src="getimg('/static/images/index2_11.jpg')" mode=""></image>
 					<p>保单管理</p>
-				</view> 
-				<view @tap="jump" :data-url="'/pages/new_html/new_html?id='+active">
-					<image src="/static/images/index2_15.jpg" mode=""></image>
+				</view>
+				<view @tap="jump" :data-url="'/pages_fk/search/search?id='+active">
+					<image :src="getimg('/static/images/index2_15.jpg')" mode=""></image>
 					<p>保险词条</p>
 				</view>
 			</view>
@@ -81,43 +100,15 @@
 				htmlReset: -1,
 				active: 0,
 				cur: -1,
-				datas: [{
-						photo: 'http://www.xiaotu.top/storage/uploads/admin/Goods/20200403/5912dfa26509613b0efdd6263995b3a8.jpeg',
-						goodsDataValue: {
-							tag_color: '#2d9ded',
-							tag: '123',
-							title: '454564',
-							trait: '123',
-							price: '555.00',
-							buy_url: 'https:www.baidu.com',
-							evalua_url: 'https:www.baidu.com'
-						}
-					},
-					{
-						photo: 'http://www.xiaotu.top/storage/uploads/admin/Goods/20200403/5912dfa26509613b0efdd6263995b3a8.jpeg',
-						goodsDataValue: {
-							tag_color: '',
-							tag: '',
-							title: '储蓄保险',
-							trait: '超级好111',
-							price: '50',
-							buy_url: 'https:www.baidu.com',
-							evalua_url: 'https:www.baidu.com'
-						}
-					},
-					{
-						photo: 'http://www.xiaotu.top/storage/uploads/admin/Goods/20200417/2cb366059dbaf39392ff85018d530de7.png',
-						goodsDataValue: {
-							tag_color: '#62a3d1',
-							tag: '储蓄',
-							title: '储蓄',
-							trait: '储蓄',
-							price: '50',
-							buy_url: 'https:www.baidu.com',
-							evalua_url: 'https:www.baidu.com'
-						}
-					},
-				]
+				datas: [],
+				bannerData: [],
+				indicatorDots: true,
+				autoplay: true,
+				interval: 3000,
+				duration: 500,
+				cateData: [],
+				goodsData: [],
+				newsData:[]
 			}
 		},
 		computed: {
@@ -132,31 +123,146 @@
 		},
 		methods: {
 			...mapMutations(['login', 'logindata', 'logout', 'setplatform', 'setfj_data']),
+			getimg(img) {
+				return service.getimg(img)
+			},
 			onRetry() {
 				that.htmlReset = 0
+				that.getdata()
 			},
-			getCate(idx) {
+			getCate(idx, pid) {
+				if (that.btn_kg == 1) {
+					return
+				}
 				that.active = idx
 				that.cur = -1
+				that.getProduct(0, pid)
 			},
 			qhcur(num, id, pid) {
+				if (that.btn_kg == 1) {
+					return
+				}
 				that.cur = num
 				that.getProduct(id, pid)
 			},
-			getProduct(id, pid) {
-				return
-				$.ajax({
-					url: "{$apply}/getProduct",
-					dataType: 'json',
-					type: 'post',
-					data: {
-						'id': id,
-						pid: pid
-					},
-					success: function(res) {
-						console.log(res);
-						$(".h_list").html(res);
+			getdata() {
+				var that = this
+				var data = {}
+				//selectSaraylDetailByUserCard
+				var jkurl = '/index'
+				uni.showLoading({
+					mask: true,
+					title: '正在获取数据'
+				})
+				var page_that = this.page
+				service.P_get(jkurl, data).then(res => {
+					that.btn_kg = 0
+					console.log(res)
+					if (res.code == 1) {
+						var datas = res.data
+						console.log(typeof datas)
+
+						if (typeof datas == 'string') {
+							datas = JSON.parse(datas)
+						}
+						that.datas = datas
+						that.bannerData = datas.bannerData
+						that.cateData = datas.cateData
+						that.goodsData = datas.goodsData
+						that.newsData=datas.newsData
+						/*if(page_that==1){
+							that.datas = datas.data
+						}else{
+							if(datas.data.length==0){
+								that.data_last=true
+								return
+							}
+							that.datas = that.datas.concat(datas.data)
+						}
+						that.page++
+						console.log(datas)*/
+
+
+					} else {
+						if (res.msg) {
+							uni.showToast({
+								icon: 'none',
+								title: res.msg
+							})
+						} else {
+							uni.showToast({
+								icon: 'none',
+								title: '操作失败'
+							})
+						}
 					}
+				}).catch(e => {
+					that.btn_kg = 0
+					console.log(e)
+					uni.showToast({
+						icon: 'none',
+						title: '获取数据失败'
+					})
+				})
+			},
+			getProduct(id, pid) {
+				uni.showLoading({
+					mask: true,
+					title: '正在获取数据'
+				})
+				var jkurl = '/getProduct'
+				var data = {
+					id: id,
+					pid: pid,
+					page: 1,
+					size: 20,
+				}
+				that.btn_kg = 1
+				service.P_get(jkurl, data).then(res => {
+					that.btn_kg = 0
+					console.log(res)
+					if (res.code == 1) {
+						var datas = res.data
+						console.log(typeof datas)
+
+						if (typeof datas == 'string') {
+							datas = JSON.parse(datas)
+						}
+
+						that.goodsData = datas
+						console.log(datas)
+
+
+					} else {
+						if (res.msg) {
+							uni.showToast({
+								icon: 'none',
+								title: res.msg
+							})
+						} else {
+							uni.showToast({
+								icon: 'none',
+								title: '操作失败'
+							})
+						}
+					}
+				}).catch(e => {
+					that.btn_kg = 0
+					console.log(e)
+					uni.showToast({
+						icon: 'none',
+						title: '获取数据失败'
+					})
+				})
+				
+			},
+			jump_web(url) {
+				if (!url) {
+					return
+				}
+				uni.setStorageSync('web_url', url)
+				uni.navigateTo({
+					url: '/pages/new_html/new_html'
 				})
 			},
 			jump(e) {
@@ -341,7 +447,7 @@
 		border-bottom: 13upx solid #f7f7f7;
 	}
 
-	.wenti_list a {
+	.wenti_list view {
 		display: -webkit-box;
 		/* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
 		display: -moz-box;
@@ -364,7 +470,7 @@
 		/* line-height: .62rem; */
 	}
 
-	.wenti_list a+a {
+	.wenti_list view+view {
 		border-top: 1px solid #F7F7F7;
 	}
 
@@ -391,5 +497,19 @@
 		margin: 0 auto 10upx;
 		box-shadow: 0px 0px 10upx 0px rgba(0, 0, 0, 0.1);
 		border-radius: 50%;
+	}
+
+
+
+
+	.swiper {
+
+		width: 100%;
+		height: 284upx;
+	}
+
+	.swi_img {
+		width: 100%;
+		height: 284upx;
 	}
 </style>

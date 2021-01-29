@@ -1,0 +1,132 @@
+
+page.data-v-29be026a {
+		background: #fff;
+}
+.ct_top.data-v-29be026a {
+		width: 100%;
+		height: 120rpx;
+		border-top: 1px solid #e6e6e6;
+		font-size: 40rpx;
+		padding: 0 33rpx;
+		box-sizing: border-box;
+		background: #fff;
+}
+.ct_list.data-v-29be026a {
+		background: #fff;
+		width: 100%;
+		padding: 0 33rpx;
+		box-sizing: border-box;
+		margin-bottom: 17rpx;
+}
+.ct_list>view.data-v-29be026a {
+		border-top: 1px solid #E6E6E6;
+}
+.ct_list .d1.data-v-29be026a {
+		color: #43BFFF;
+		font-size: 26rpx;
+		height: 85rpx;
+		padding-right: 5px;
+}
+.ct_list .d2>view.data-v-29be026a {
+		display: block;
+		width: 100%;
+		color: #43BFFF;
+		font-size: 26rpx;
+		height: 85rpx;
+		/* line-height: 85upx; */
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+}
+.ct_list .d2.data-v-29be026a {
+		height: 85rpx;
+		overflow: hidden;
+}
+.ct_list .d2.listshow.data-v-29be026a {
+		height: auto;
+}
+.ct_list .d3.data-v-29be026a {
+		color: #43BFFF;
+		font-size: 26rpx;
+		height: 85rpx;
+		line-height: 85rpx;
+}
+.ct_list .d3 ._img.data-v-29be026a {
+		width: 24rpx;
+		height: 24rpx;
+		margin-left: 4px;
+		/* height: .08upx; */
+}
+.sheji.data-v-29be026a {
+		width: 100%;
+		padding: 48rpx 30rpx 30rpx;
+		box-sizing: border-box;
+		background: #fff;
+		border-top: 0.17rpx solid #f7f7f7;
+}
+.d_tit.data-v-29be026a {
+		border-left: 3rpx solid #43BFFF;
+		padding-left: 7px;
+		font-size: 32rpx;
+		font-weight: 800;
+		color: #333;
+		margin-bottom: 10rpx;
+}
+.d_inr.data-v-29be026a {
+		font-size: 28rpx;
+		font-family: PingFang SC;
+		font-weight: 500;
+		color: rgba(51, 51, 51, 1);
+		line-height: 60rpx;
+}
+.noselect.data-v-29be026a {
+		-webkit-touch-callout: none;
+		/* iOS Safari */
+		-webkit-user-select: none;
+		/* Chrome/Safari/Opera */
+		/* Konqueror */
+		/* Firefox */
+		/* Internet Explorer/Edge */
+		user-select: none;
+		/* Non-prefixed version, currently
+not supported by any browser */
+}
+.d_inr1.data-v-29be026a {
+		text-indent: 2em;
+}
+.inr_cz.data-v-29be026a {
+		margin-top: 40rpx;
+		height: 30rpx;
+}
+.zan.data-v-29be026a {
+		float: right;
+		font-size: 20rpx;
+		color: #999;
+		margin-left: 10px;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+}
+.zan ._i.data-v-29be026a {
+		margin-right: 3px;
+		font-size: 20rpx;
+		color: #999;
+}
+.zan1.data-v-29be026a {
+		color: #f00;
+}
+.zan1 ._i.data-v-29be026a {
+		color: #f00;
+}
+.newsDe.data-v-29be026a {
+		line-height: 90rpx;
+		height: 90rpx;
+		/*text-indent: 1em;*/
+}
+

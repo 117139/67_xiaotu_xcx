@@ -2,22 +2,22 @@
 	<view class="minh100" id="choose">
 		<!-- 说明 -->
 		<view class="explain" @tap="jump" data-url="/pagesA/explain/explain">
-			<image src="/static/img/explain.png" mode=""></image>
+			<image :src="getimg('/static/img/explain.png')" mode=""></image>
 			<text>使用</text><br>
 			<text>说明</text>
 		</view>
 		
 			
 		<view class="search nameSearch" hairline type="info" size="large" @tap="jump" data-url="/pages/nameSearch/nameSearch">
-			<image src="/static/img/nameSearch.png" mode="aspectFit"></image>
+			<image :src="getimg('/static/img/nameSearch.png')" mode="aspectFit"></image>
 		</view>
-		<view class="search contentSearch" hairline type="info" size="large" @tap="jump" data-url="/pages/contentSearch/contentSearch">
+		<view class="search contentSearch" hairline type="info" size="large" @tap="jump" data-url="/pagesA/contentSearch/contentSearch">
 			
-				<image src="/static/img/contentSearch.png" mode="aspectFit"></image>
+				<image :src="getimg('/static/img/contentSearch.png')" mode="aspectFit"></image>
 		</view>
 		<!-- 查看收藏 -->
 		<view class="collection" @tap="jump" data-url="/pagesA/collect/collect"  mode="aspectFit"></image>
-			<image src="/static/img/collect.png">
+			<image :src="getimg('/static/img/collect.png')">
 		</view>
 	</view>
 </template>
@@ -43,6 +43,9 @@
 		methods: {
 
 			...mapMutations(['login', 'logindata', 'logout', 'setplatform', 'setfj_data']),
+			getimg(img){
+				return service.getimg(img)
+			},
 			jump(e) {
 				var that = this
 

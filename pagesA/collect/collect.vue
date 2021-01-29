@@ -11,11 +11,11 @@
 			<ul class="insurancesData">
 				<view class="ju_b" :id="val.id" v-for="(val,index) in Insurances" :key="index" @click="goDetail(val.pid,val.ptypeCode)" :class="[checkedData.indexOf(val.pid) != -1 ? 'compareChecked':'',val.isOnline == '0' ? 'unOnline':'']">
 					<!-- <van-icon :name="beforeIcon" class="liIcon" /> -->
-					<image :src="beforeIcon" mode="aspectFill" class="liIcon"></image>
+					<image :src="getimg(beforeIcon)" mode="aspectFill" class="liIcon"></image>
 					<!-- <view class="flex_1">{{val.pname}}<span class="shop" v-if="val.isBuy != '0' && val.isOnline != '0'">购</span></view> -->
 					<view class="flex_1 text-cut">{{val.pname}}<span v-if="val.isBuy != '0' && val.isOnline != '0'" class="shop">购</span></view>
 					<!-- <van-icon :name="detailIcon" class="liked" /> -->
-					<image :src="detailIcon" mode="aspectFill" class="liked"></image>
+					<image :src="getimg(detailIcon)" mode="aspectFill" class="liked"></image>
 				</view>
 				<view v-if="data_last" class="getMore ju_c">
 					到底了~~~
@@ -26,7 +26,7 @@
 			</ul>
 		</div>
 		<div class="noCollectBox" v-else>
-			<image class="noCollectImg" src="/static/img/none.png" mode="widthFix"></image>
+			<image class="noCollectImg" :src="getimg('/static/img/none.png')" mode="widthFix"></image>
 			<p class="noCollect">您还没有收藏产品哦~</p>
 		</div>
 	</view>
@@ -63,6 +63,9 @@
 		},
 		methods: {
 			...mapMutations(['login', 'logindata', 'logout', 'setplatform', 'setfj_data']),
+			getimg(img){
+				return service.getimg(img)
+			},
 			back(){
 				uni.navigateBack({
 					delta:1
@@ -83,6 +86,10 @@
 				})
 			},
 			getMore() {
+				uni.showLoading({
+					mask:true,
+					title:'正在请求数据'
+				})
 				let data = {
 					fid: 'S0009',
 					openId: this.$store.state.loginDatas.openId,

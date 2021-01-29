@@ -28,7 +28,7 @@
 		</view>
 		<!-- 查看收藏 -->
 		<view class="collection"  @tap="jump" data-url="/pagesA/collect/collect"  mode="aspectFit"></image>
-			<image src="/static/img/collect.png">
+			<image :src="getimg('/static/img/collect.png')">
 		</view>
 	</view>
 </template>
@@ -103,6 +103,9 @@
 		methods: {
 			
 			...mapMutations(['login', 'logindata', 'logout', 'setplatform', 'setfj_data']),
+			getimg(img){
+				return service.getimg(img)
+			},
 			active_fuc(num) {
 				this.active = num
 			},
@@ -128,7 +131,7 @@
 				// });
 				// window.location.href="xtcpk_index.html"
 				uni.navigateTo({
-					url:'/pagesA/xtcpk_index/xtcpk_index'
+					url:'/pagesA/xtcpk_index/xtcpk_index?title=按名称搜索'
 				})
 				// this.$store.state.title = "按名称搜索";
 			},

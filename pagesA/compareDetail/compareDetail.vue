@@ -151,7 +151,7 @@
 					sid :sid,
 					num : num,
 				}
-				var jkurl = '/bx/mobile'
+				var jkurl = service.imgurl_w+'/bx/mobile'
 				var header = {
 					'content-type': 'application/json'
 				}
@@ -237,7 +237,7 @@
 					flag: this.isLike,
 					id: details.id[0],
 				}
-				var jkurl = '/bx/mobile'
+				var jkurl = service.imgurl_w+'/bx/mobile'
 				var header = {
 					'content-type': 'application/json'
 				}

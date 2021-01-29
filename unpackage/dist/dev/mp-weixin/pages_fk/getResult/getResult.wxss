@@ -1,0 +1,64 @@
+
+.ss_box.data-v-79288f94 {
+	margin: 0 auto 40rpx;
+	width: 690rpx;
+	height: 77rpx;
+	border: 2rpx solid rgba(51, 51, 51, 1);
+	border-radius: 0.1rpx;
+	padding: 8rpx 0 8rpx 22rpx;
+	box-sizing: border-box;
+}
+.icon-sousuo1.data-v-79288f94 {
+	font-size: 37rpx;
+	color: #999;
+	margin-right: 16rpx;
+}
+.ss_box input.data-v-79288f94 {
+	font-size: 30rpx;
+	min-width: 0;
+}
+.select_ss.data-v-79288f94 {
+	font-size: 28rpx;
+	color: #666;
+	padding: 0 22rpx;
+}
+.select_ss ._img.data-v-79288f94 {
+	width: 13rpx;
+	height: 13rpx;
+	margin-left: 16rpx;
+}
+.ss_btn.data-v-79288f94 {
+	height: 45rpx;
+	border-left: 3rpx solid #40BDFE;
+	font-size: 30rpx;
+	color: #40BEFE;
+	width: 160rpx;
+}
+.s_list.data-v-79288f94 {
+	width: 100%;
+
+	margin-bottom: 2.2rpx;
+}
+.s_list>view.data-v-79288f94 {
+	display: block;
+	padding: 30rpx;
+	box-sizing: border-box;
+}
+.s_list .d1.data-v-79288f94 {
+	font-size: 40rpx;
+	font-family: PingFang SC;
+	font-weight: 800;
+	color: #333;
+	/* margin-bottom: 17upx; */
+}
+.s_list .d2.data-v-79288f94 {
+	font-size: 26rpx;
+	font-family: PingFang SC;
+	font-weight: 500;
+	color: #333;
+	line-height: 46rpx;
+}
+.s_list>view+view.data-v-79288f94 {
+	border-top: 8rpx solid #f7f7f7;
+}
+

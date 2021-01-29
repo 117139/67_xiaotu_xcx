@@ -17,6 +17,9 @@
 			this.src = uni.getStorageSync('web_url') || ''
 			console.log(this.src)
 		},
+		onUnload() {
+			uni.setStorageSync('web_url','')
+		},
 		methods: {
 
 		}

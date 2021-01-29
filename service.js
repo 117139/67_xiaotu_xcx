@@ -6,12 +6,14 @@ const USERS_KEY = 'USERS_KEY';
 const STATE_KEY = 'STATE_KEY';
 // const IPurl = 'https://datixcx.com.aa.800123456.top/api/';
 // const imgurl = 'https://datixcx.com.aa.800123456.top/';
-const imgurl = 'https://www.xiaotubaoxian.com/';
-const IPurl=imgurl+''
+const imgurl_w = 'https://www.xiaotubaoxian.com/';
+// const IPurl=imgurl+''
 // const IPurl='http://192.168.129.246/api/'
 // const adminurl='https://datixcx.com.aa.800123456.top/admin/';
 // appid:wx4c41cc50c5a53df9
 // appid:wx49a560f7feac0feb   cj
+const imgurl = 'http://192.168.133.161:94/';
+const IPurl=imgurl+'api/'
 /**
  * 请求头
  */
@@ -237,12 +239,12 @@ const wxlogin=function (num){
 	                let data = {
 	                  code: res.code,
 	                  nickname: uinfo.nickName,
-	                  cover: uinfo.avatarUrl
+	                  avatarurl: uinfo.avatarUrl
 	                }
 	                let rcode = res.code
 	                console.log(res.code)
 	                uni.request({
-	                  url: IPurl+'user/login',
+	                  url: IPurl+'/login',
 	                  data: data,
 	                  header: {
 	                    'content-type': 'application/x-www-form-urlencoded'
@@ -255,7 +257,7 @@ const wxlogin=function (num){
 	                    if (res.data.code == 1) {
 	                      console.log('登录成功')
 	                      console.log(res.data)
-	                      uni.setStorageSync('token', res.data.data.token)
+	                      uni.setStorageSync('token', res.data.data.userToken)
 												//获取手机号
 												/*
 												if(!res.data.data.phone){
@@ -270,52 +272,9 @@ const wxlogin=function (num){
 												store.commit('login', res.data.data.nickname)
 												
 	                      uni.setStorageSync('loginmsg', res.data.data)
-												//0 商家端  1 用户端  2智能安装端
-												console.log('store.xcx_status')
-												console.log(store.state.xcx_status)
-												if(store.state.xcx_status==1){
-													console.log(res.data.data.is_engineer)
-													// if(res.data.data.is_owner==1){
-													// 	store.commit('set_xcx', 1)
-													// 	return
-													// }
-													if(res.data.data.is_engineer==1){
-														store.commit('set_xcx', 2)
-														return
-													}
-													if(res.data.data.is_seller==1){
-														store.commit('set_xcx', 0)
-													}
-												}
-												// im login
+											
 												
-												
-												
-												if(num==1){
-													uni.showToast({
-														icon:'none',
-														title:'登录成功'
-													})
-													setTimeout(()=>{
-														event.trigger({
-														    type:'test',
-														    page:'/pages/index/index',
-														    //obj和test是举的例子，随意啥都行，这个传过去在on中的args中都可以获取到
-														    obj:{
-														
-														    },
-														    test:{
-																	'loginmsg': res.data.data
-														    },
-														    success:function(data){
-														        //data为on中返回的数据
-														    }
-														});
-													},1000)
-													setTimeout(()=>{
-														uni.navigateBack()
-													},1500)
-												}else{
+												setTimeout(()=>{
 													event.trigger({
 													    type:'test',
 													    page:'/pages/index/index',
@@ -330,6 +289,18 @@ const wxlogin=function (num){
 													        //data为on中返回的数据
 													    }
 													});
+												},1000)
+												if(num==1){
+													uni.showToast({
+														icon:'none',
+														title:'登录成功'
+													})
+													
+													setTimeout(()=>{
+														uni.navigateBack()
+													},1500)
+												}else{
+												
 												}
 	                    } else {
 	                      uni.removeStorageSync('userInfo')
@@ -711,6 +682,7 @@ export default {
 	post,
 	IPurl,
 	imgurl,
+	imgurl_w,
 	gologin,
 	jump,
 	pveimg,

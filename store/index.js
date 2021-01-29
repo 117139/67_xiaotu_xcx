@@ -33,7 +33,7 @@ const store = new Vuex.Store({
 		pageSize:20,
 		
 		
-		
+		activeName:-1,
 		
 		
 		xcx_status:1,     //0 商家端  1 用户端  2智能安装端

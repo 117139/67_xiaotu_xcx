@@ -19,7 +19,7 @@
 				</view>
 				<view class="dataBox">
 					
-					<ul class="insurancesData">
+					<ul v-if="Insurances.length>0" class="insurancesData">
 						<view class="ss_li" :id="item.id" v-for="(item,index) in Insurances" :class="[checkedData.indexOf(item.pid) != -1 ? 'compareChecked':'',item.isOnline == '0' ? 'unOnline':'']"
 						 @click="goDetail(item.pid,item.ptypeCode)">
 							<text class="liIcon">{{item.ptype[0]}}</text>
@@ -36,7 +36,8 @@
 							加载更多
 						</li>
 					</ul>
-				</view>
+					<view v-else class="zanwu">暂无数据</view>
+				</view> 
 			</view>
 		</view>
 	</view>
@@ -68,9 +69,16 @@
 				data_last:false
 			}
 		},
-		onLoad() {
+		onLoad(option) {
 			that = this
+			uni.setNavigationBarTitle({
+				title:option.title
+			})
 			var froms = uni.getStorageSync("froms")
+			uni.showLoading({
+				mask:true,
+				title:'正在请求数据'
+			})
 			if (froms == "nameSearch") {
 				that.getMore();
 			} else if (froms == "contentSearch") {
@@ -117,7 +125,7 @@
 					pageSize: this.$store.state.pageSize,
 					pageIndex: this.pageIndex,
 				}
-				var jkurl = '/bx/mobile'
+				var jkurl = service.imgurl_w+'/bx/mobile'
 				var header={'content-type': 'application/json'}
 				var page_that= this.pageIndex
 				service.P_post(jkurl, data,header).then(res => {
@@ -175,10 +183,10 @@
 
 			},
 			contentGetMore() {
-				if (vm.btnkg == 1) {
+				if (that.btnkg == 1) {
 					return
 				}
-				vm.btnkg = 1
+				that.btnkg = 1
 				// var serchData = JSON.parse(sessionStorage.getItem('contentSearchData'));
 				var serchData = JSON.parse(uni.getStorageSync('contentSearchData'));
 				var data = {
@@ -186,12 +194,12 @@
 					openId: this.$store.state.loginDatas.openId,
 					flag: String(serchData.flag),
 					type: serchData.type,
-					qType: serchData.qType,
 					keyword: serchData.keyword,
+					contentArray:serchData.data,
 					pageSize: this.$store.state.pageSize,
 					pageIndex: this.pageIndex,
 				}
-				var jkurl = '/bx/mobile'
+				var jkurl = service.imgurl_w+'/bx/mobile'
 				var header={'content-type': 'application/json'}
 				var page_that= this.pageIndex
 				service.P_post(jkurl, data,header).then(res => {
