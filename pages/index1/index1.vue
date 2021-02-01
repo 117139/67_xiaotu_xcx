@@ -50,8 +50,8 @@
 										<span style="color: #666;font-size: 25upx;">元</span>
 									</div>
 									<div class="li_btn_box dis_flex ju_b">
-										<text @tap="jump_web(item.buy_url)" :data-url="'/pages/new_html/new_html?id='+item.buy_url">购买</text>
-										<text @tap="jump_web(item.evalua_url)" :data-url="'/pages/new_html/new_html?id='+item.evalua_url">评测</text>
+										<text @tap="jump_web(item.buy_url,1,item.id)" :data-url="'/pages/new_html/new_html?id='+item.buy_url">购买</text>
+										<text @tap="jump_web(item.evalua_url,2,item.id)" :data-url="'/pages/new_html/new_html?id='+item.evalua_url">评测</text>
 									</div>
 								</div>
 							</div>
@@ -73,7 +73,7 @@
 
 					<p>产品库</p>
 				</view>
-				<view @tap="jump" :data-url="'/pages/new_html/new_html?id='+active">
+				<view @tap="jump" :data-url="'/pages_fk/policyList/policyList?id='+active">
 					<image :src="getimg('/static/images/index2_11.jpg')" mode=""></image>
 					<p>保单管理</p>
 				</view>
@@ -117,6 +117,9 @@
 		onLoad() {
 			that = this
 			that.onRetry()
+		},
+		onShow() {
+			that.btn_kg = 0
 		},
 		onShareAppMessage() {
 
@@ -256,14 +259,66 @@
 				})
 				
 			},
-			jump_web(url) {
+			jump_web(url,type,id) {
 				if (!url) {
 					return
 				}
-				uni.setStorageSync('web_url', url)
-				uni.navigateTo({
-					url: '/pages/new_html/new_html'
-				})
+				if(type){
+					if(that.btn_kg==1){
+						return
+					}
+					that.btn_kg=1
+					var jkurl = '/skip'
+					var data = {
+						token: this.$store.state.loginDatas.userToken,
+						id: id,
+						type:type
+					}
+					service.P_get(jkurl, data).then(res => {
+						that.btn_kg = 0
+						console.log(res)
+						if (res.code == 1) {
+							var datas = res.data
+							console.log(typeof datas)
+					
+							if (typeof datas == 'string') {
+								datas = JSON.parse(datas)
+							}
+							
+							console.log(datas)
+					
+							uni.setStorageSync('web_url', url)
+							uni.navigateTo({
+								url: '/pages/new_html/new_html'
+							})
+						} else {
+							if (res.msg) {
+								uni.showToast({
+									icon: 'none',
+									title: res.msg
+								})
+							} else {
+								uni.showToast({
+									icon: 'none',
+									title: '操作失败'
+								})
+							}
+						}
+					}).catch(e => {
+						that.btn_kg = 0
+						console.log(e)
+						uni.showToast({
+							icon: 'none',
+							title: '操作失败'
+						})
+					})
+				}else{
+					uni.setStorageSync('web_url', url)
+					uni.navigateTo({
+						url: '/pages/new_html/new_html'
+					})
+				}
+				
 			},
 			jump(e) {
 				if (that.btn_kg == 1) {

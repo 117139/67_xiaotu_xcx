@@ -83,6 +83,24 @@
                 }
                 
                 }
+                ,{
+                    "path" : "policyList/policyList",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "policyAdd/policyAdd",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
             ]
 	}, {
 		"root": "pagesA",

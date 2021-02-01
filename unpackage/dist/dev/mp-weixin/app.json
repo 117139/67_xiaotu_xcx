@@ -14,7 +14,9 @@
         "search/search",
         "getResult/getResult",
         "lexicnDetails/lexicnDetails",
-        "catalogue/catalogue"
+        "catalogue/catalogue",
+        "policyList/policyList",
+        "policyAdd/policyAdd"
       ]
     },
     {

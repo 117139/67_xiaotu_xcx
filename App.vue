@@ -143,6 +143,9 @@
 	    -webkit-box-orient: vertical;
 			 
 	}
+	.tac{
+		text-align: center;
+	}
 	view{
 		word-break:break-all;
 		
