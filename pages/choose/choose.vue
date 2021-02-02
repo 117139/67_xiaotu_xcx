@@ -46,6 +46,9 @@
 			getimg(img){
 				return service.getimg(img)
 			},
+			web_login(){
+				
+			},
 			jump(e) {
 				var that = this
 

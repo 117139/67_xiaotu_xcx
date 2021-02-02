@@ -102,7 +102,7 @@
 				// 		this.$store.state.pageSize += 10;
 				// 	}
 				// })
-				var jkurl = '/bx/mobile'
+				var jkurl = service.imgurl_w+'/bx/mobile'
 				var header={'content-type': 'application/json'}
 				var page_that= this.pageIndex
 				service.P_post(jkurl, data,header).then(res => {

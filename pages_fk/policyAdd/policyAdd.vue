@@ -3,22 +3,22 @@
 		<form @submit="formSubmit" @reset="formReset" class="add_form">
 			<view class="add_list">
 				<view class="add_li dis_flex ju_b aic">
-					<view class="c6 add_li_name">投保人</view> <input name="applicant" type="text" placeholder="请输入" class="c3 tac flex_1">
+					<view class="c6 add_li_name">投保人</view> <input name="applicant" type="text" v-model="applicant" placeholder="请输入" class="c3 tac flex_1">
 				</view>
 				<view class="add_li dis_flex ju_b aic">
-					<view class="c6 add_li_name">被保险人</view> <input name="insured" type="text" placeholder="请输入" class="c3 tac flex_1">
+					<view class="c6 add_li_name">被保险人</view> <input name="insured" type="text" v-model="insured" placeholder="请输入" class="c3 tac flex_1">
 				</view>
 				<!---->
 			</view>
 			<view class="add_list">
 				<view class="add_li dis_flex ju_b aic">
-					<view class="c6 add_li_name">保险公司</view> <input name="insurance_ent" type="text" placeholder="请输入保险公司" class="c3 tac flex_1">
+					<view class="c6 add_li_name">保险公司</view> <input name="insurance_ent" type="text" v-model="insurance_ent" placeholder="请输入保险公司" class="c3 tac flex_1">
 				</view>
 				<view class="add_li dis_flex ju_b aic">
-					<view class="c6 add_li_name">保险产品</view> <input name="insured_name" type="text" placeholder="请输入产品名称" class="c3 tac flex_1">
+					<view class="c6 add_li_name">保险产品</view> <input name="insured_name" type="text"  v-model="insured_name" placeholder="请输入产品名称" class="c3 tac flex_1">
 				</view>
 				<view class="add_li dis_flex ju_b aic">
-					<view class="c6 add_li_name">保单号</view> <input name="insured_sn" type="text" placeholder="请输入保单号(选填）" class="c3 tac flex_1">
+					<view class="c6 add_li_name">保单号</view> <input name="insured_sn" type="text" v-model="insured_sn" placeholder="请输入保单号(选填）" class="c3 tac flex_1">
 				</view>
 				<picker class="add_li" @change="bindPickerChange" data-type="lb" :value="index_lb" :range="array_lb">
 					<view class="add_li dis_flex ju_b aic">
@@ -43,18 +43,18 @@
 					<view><span style="color: #1F8FFF;">{{array_qx[index_qx]}}</span> 年</view> 
 					<!-- <input name="fees_day" type="hidden" value="1"> -->
 					
-					<input name="insured_type" :value="array_lb[index_lb]" disabled style="display: none;"> 
+					<input name="fees_day" :value="array_lb[index_lb]" disabled style="display: none;"> 
 					<i class="iconfont icon-next c9"></i>
 				</view>
 				</picker>
 				<view class="add_li dis_flex ju_b aic">
 					<view class="c6 add_li_name">保费</view> 
-					<input name="fees_price" type="text" placeholder="请输入保费" class="c3 tac flex_1">
+					<input name="fees_price" type="digit" v-model="fees_price" placeholder="请输入保费" class="c3 tac flex_1">
 					<view class="c6">元</view>
 				</view>
 				<view class="add_li dis_flex ju_b aic">
 					<view class="c6 add_li_name">保额</view> 
-					<input name="coverage" type="text" placeholder="请输入保额" class="c3 tac flex_1"> 
+					<input name="coverage" type="digit" v-model="coverage" placeholder="请输入保额" class="c3 tac flex_1"> 
 					<picker class="dis_flex ju_b aic" @change="bindPickerChange" data-type="be" :value="index_be" :range="array_be">
 						<view class="dis_flex ju_b aic">
 							<input  name="coverage_unit" :value="array_be[index_be]" disabled="" style="width: 2em;">
@@ -79,12 +79,12 @@
 				<view class="add_li dis_flex ju_b aic">
 					<view class="c6 add_li_name">到期时间</view>
 					<!-- <view class="c3 tac flex_1 ">2021/02/01</view> -->
-					<input name="safeguard_time" placeholder="请选择到期时间" type="hidden"v-model="safeguard_time" disabled>
+					<input name="safeguard_time" placeholder="请选择到期时间" type="hidden" v-model="safeguard_time" disabled>
 					<i class="iconfont icon-next c9"></i>
 				</view>
 				</picker>
 				<view class="add_li dis_flex ju_b aic">
-					<view class="c6 add_li_name">缴费账户</view> <input name="fees_account" type="text" placeholder="请输入缴费账户" class="c3 tac flex_1">
+					<view class="c6 add_li_name">缴费账户</view> <input name="fees_account" type="text" v-model="fees_account" placeholder="请输入缴费账户" class="c3 tac flex_1">
 				</view>
 				<picker class="add_li" mode="date" :value="date" :start="startDate" :end="endDate" @change="bindTimeChange" data-type="buy">
 				<view class="add_li dis_flex ju_b aic">
@@ -97,12 +97,12 @@
 				<view class="add_li dis_flex ju_b aic">
 					<view class="c6 add_li_name">是否生效</view> 
 					<input name="is_effect" type="hidden" v-model="is_effect" disabled style="opacity: 0;">
-					<switch checked @change="switch1Change" data-num="1" disabled color="#D8D8D8"/>
+					<switch :checked="is_effect=='true'||is_effect==true"  @change="switch1Change" data-num="1" color="#D8D8D8"/>
 				</view>
 				<view class="add_li dis_flex ju_b aic">
 					<view class="c6 add_li_name">自动提醒</view> 
-					<input name="is_remind" type="hidden" v-model="is_remind" style="opacity: 0;">
-					<switch checked @change="switch1Change" data-num="2" color="#D8D8D8"/>
+					<input name="is_remind" type="hidden" v-model="is_remind" disabled style="opacity: 0;">
+					<switch  :checked="is_remind=='true'||is_remind==true" @change="switch1Change" data-num="2" color="#D8D8D8"/>
 					
 				</view>
 			</view>
@@ -112,7 +112,9 @@
 					<view class="dis_flex">
 						<view v-if="sj_img" class="upbtn upbtn2" @tap="upimg"><image :src="getimg(sj_img)" mode="aspectFit"></image></view>
 						<view v-else class="upbtn upbtn2" @tap="upimg"><image :src="getimg('/static/web/images/upimg.png')" mode="aspectFit"></image></view>
-						<input type="text" :value="getimg(sj_img)" style="width: 0;opacity: 0;">
+						<input type="text" name="warranty_pic" :value="sj_img" style="width: 0;opacity: 0;">
+						<input type="text" name="token" :value="loginDatas.userToken" style="width: 0;opacity: 0;">
+						<input v-if="id" type="text" name="id" :value="id" style="width: 0;opacity: 0;">
 						<!-- <p type="" class="flex_1  dis_flex aic bd_name" style="font-size: 0.2rem;"></p> <input type="hidden" name="warranty_pic"> -->
 					</view>
 					<!-- <p class="up_tip">文档、图片、PDF等格式</p> -->
@@ -163,6 +165,12 @@
 	export default {
 		data() {
 			return {
+				id:'',
+				applicant:'',    //投保人
+				insured:'',    //被保险人
+				insurance_ent:'', //保险公司
+				insured_name:'',    //保险产品
+				insured_sn:'',     //保单号
 				array_lb:[],
 				index_lb:0,
 				month_list:['01','02','03','04','05','06','07','08','09','10','11','12'],
@@ -171,6 +179,8 @@
 				array_qx:['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50',],
 				
 				index_qx:0,
+				fees_price:'',
+				coverage:'',
 				array_be:[
 					'元',
 					'万元',
@@ -181,9 +191,8 @@
 					'定期',
 				],
 				index_bz:0,
-				insured_type:'',
-				safeguard_type:'',
 				safeguard_time:'',
+				fees_account:'',
 				buy_time:'',
 				is_effect:true,
 				is_remind:true,
@@ -196,9 +205,12 @@
 		computed: {
 			...mapState(['hasLogin', 'forcedLogin', 'userName', 'loginDatas']),
 		},
-		onLoad() {
+		onLoad(option) {
 			that=this
 			that.getdata()
+			if(option.id){
+				that.id=option.id
+			}
 		},
 		methods: {
 			pick_fuc(e){
@@ -263,6 +275,9 @@
 						that.datas = datas
 						that.array_lb=datas.policyData
 						that.policyData=datas.InsuranceCompanyData
+						if(that.id){
+							that.getmsg()
+						}
 						/*if(page_that==1){
 							that.datas = datas.data
 						}else{
@@ -298,6 +313,88 @@
 					})
 				})
 			},
+			getmsg(){
+				var that = this
+				var data = {
+					token:that.loginDatas.userToken,
+					id:that.id
+				}
+				//selectSaraylDetailByUserCard
+				var jkurl = '/policy/edit'
+				
+				var page_that = this.page
+				service.P_get(jkurl, data).then(res => {
+					that.btn_kg = 0
+					console.log(res)
+					if (res.code == 1) {
+						var datas = res.data
+						console.log(typeof datas)
+							
+						if (typeof datas == 'string') {
+							datas = JSON.parse(datas)
+						}
+						// that.datas = datas
+						var datas1=datas.details
+						that.applicant=datas1.applicant
+						that.insured=datas1.insured
+						that.insurance_ent=datas1.insurance_ent
+						that.insured_name=datas1.insured_name
+						that.insured_sn=datas1.insured_sn
+						console.log('index_lb',that.getindex(that.array_lb,datas1.insured_type))
+						that.index_lb=that.getindex(that.array_lb,datas1.insured_type)
+						// that.fees_start_time=datas1.fees_start_time
+						var jf_time=datas1.date_fees_end_time1.split('-')
+						console.log('fees_end_time[0]',that.getindex(that.month_list,jf_time[1]))
+						console.log('fees_end_time[1]',that.getindex(that.month_list,jf_time[2]))
+						that.fees_end_time[0]=that.getindex(that.month_list,jf_time[1])
+						that.fees_end_time[1]=that.getindex(that.day_list,jf_time[2])
+						that.fees_day=datas1.fees_day
+						that.fees_price=datas1.fees_price
+						that.coverage=datas1.coverage
+						console.log('index_be',that.getindex(that.array_be,datas1.coverage_unit))
+						that.index_be=that.getindex(that.array_be,datas1.coverage_unit)
+						console.log('index_bz',that.getindex(that.array_bz,datas1.safeguard_type))
+						that.index_bz=that.getindex(that.array_bz,datas1.safeguard_type)
+						that.safeguard_time=datas1.safeguard_time
+						that.fees_account=datas1.fees_account
+						that.buy_time=datas1.buy_time
+						that.is_effect=datas1.is_effect
+						that.is_remind=datas1.is_remind
+						that.sj_img=datas1.warranty_pic
+					} else {
+						if (res.msg) {
+							uni.showToast({
+								icon: 'none',
+								title: res.msg
+							})
+						} else {
+							uni.showToast({
+								icon: 'none',
+								title: '操作失败'
+							})
+						}
+					}
+				}).catch(e => {
+					that.btn_kg = 0
+					console.log(e)
+					uni.showToast({
+						icon: 'none',
+						title: '获取数据失败'
+					})
+				})
+			},
+			getindex(arr,item){
+				if(arr.length>0){
+					for(var i=0;i<arr.length;i++){
+						if(arr[i]==item){
+							return i
+						}
+					}
+					return -1
+				}else{
+					return -1
+				}
+			},
 			layerMsg(msg){
 				uni.showToast({
 					icon:'none',
@@ -307,10 +404,10 @@
 			formSubmit: function(e) {
 					console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
 					var formdata = e.detail.value
-					uni.showModal({
-							content: '表单数据内容：' + JSON.stringify(formdata),
-							showCancel: false
-					});
+					// uni.showModal({
+					// 		content: '表单数据内容：' + JSON.stringify(formdata),
+					// 		showCancel: false
+					// });
 					var us=formdata
 					if(us.applicant==''){
 							that.layerMsg('请先填写投保人');return;
@@ -348,18 +445,18 @@
 					if (us.buy_time==''){
 							that.layerMsg('请先选择购买时间');return;
 					}
-					if (us.sj_img==''){
+					if (us.warranty_pic==''){
 							that.layerMsg('请上传保单');return;
 					}
 					
-					var data = {
-						token:that.loginDatas.userToken
-					}
+					var data = us
 					//selectSaraylDetailByUserCard
-					var jkurl = '/policy/getBdCate'
-					
+					var jkurl = '/policy/save'
+					if(that.id){
+						jkurl='/policy/update'
+					}
 					var page_that = this.page
-					service.P_get(jkurl, data).then(res => {
+					service.P_post(jkurl, data).then(res => {
 						that.btn_kg = 0
 						console.log(res)
 						if (res.code == 1) {

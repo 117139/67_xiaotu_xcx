@@ -1,5 +1,5 @@
 {
   "navigationBarTitleText": "小兔保",
-  "enablePullDownRefresh": false,
+  "enablePullDownRefresh": true,
   "usingComponents": {}
 }

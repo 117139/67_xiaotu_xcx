@@ -1,18 +1,18 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "小兔保",
+				"enablePullDownRefresh": true
+			}
+		
+		},{
 			"path": "pages/index1/index1",
 			"style": {
 				"navigationBarTitleText": "小兔保"
 			}
-		}, {
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "小兔保",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
+		},  {
 			"path": "pages/choose/choose",
 			"style": {
 				"navigationBarTitleText": "选择搜索方式",
@@ -34,74 +34,67 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"subPackages": [{
 		"root": "pages_fk",
 		"pages": [{
-                    "path" : "search/search",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "getResult/getResult",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "lexicnDetails/lexicnDetails",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "catalogue/catalogue",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "policyList/policyList",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "policyAdd/policyAdd",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
+			"path": "search/search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "getResult/getResult",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "lexicnDetails/lexicnDetails",
+			"style": {
+				"navigationBarTitleText": "词条",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "catalogue/catalogue",
+			"style": {
+				"navigationBarTitleText": "目录",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "policyList/policyList",
+			"style": {
+				"navigationBarTitleText": "保单管理",
+				"enablePullDownRefresh": true
+			}
+
+		}, {
+			"path": "policyAdd/policyAdd",
+			"style": {
+				"navigationBarTitleText": "编辑保单",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "examine/examine",
+			"style": {
+				"navigationBarTitleText": "保单管理",
+				"enablePullDownRefresh": true
+			}
+
+		}]
 	}, {
 		"root": "pagesA",
 		"pages": [{

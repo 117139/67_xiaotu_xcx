@@ -48,6 +48,9 @@
 			that=this
 			that.getbanner()
 		},
+		onPullDownRefresh() {
+			that.getbanner()
+		},
 		onShareAppMessage() {
 			
 		},

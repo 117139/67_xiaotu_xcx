@@ -11,7 +11,7 @@
 				<swiper-item v-for="(item,idx) in bannerData">
 
 
-					<image class="swi_img" :src="getimg(item.img)" mode="aspectFill" @tap="jump_web(url)"></image>
+					<image class="swi_img" :src="getimg(item.img)" mode="aspectFill" @tap="jump_web(url)" lazy-load="true"></image>
 				</swiper-item>
 
 			</swiper>
@@ -38,7 +38,7 @@
 					<div class="h_li  boxsiz" v-for="(item,index) in goodsData">
 						<div class="li_box dis_flex">
 							<!-- <div class="h_li_img" :style="'background-image: url('+item.photo+');'"></div> -->
-							<image class="h_li_img" :src="getimg(item.photo)" mode="aspectFill"></image>
+							<image class="h_li_img" :src="getimg(item.photo)" mode="aspectFill"  lazy-load="true"></image>
 							<div class="flex_1 h_li_msg">
 								<div class="li_type" :style="'background:'+item.tag_color+';'">{{item.tag}}</div>
 								<div class="d1 oh1">{{item.title}}</div>
@@ -69,16 +69,16 @@
 			</div>
 			<view  v-if="datas.bth_switch==1" class="h_footer dis_flex ju_a">
 				<view @tap="jump" data-url="/pages/choose/choose">
-					<image :src="getimg('/static/images/index2_09.jpg')" mode="aspectFill"></image>
+					<image :src="getimg('/static/images/index2_09.jpg')" mode="aspectFill"  lazy-load="true"></image>
 
 					<p>产品库</p>
 				</view>
 				<view @tap="jump" :data-url="'/pages_fk/policyList/policyList?id='+active">
-					<image :src="getimg('/static/images/index2_11.jpg')" mode=""></image>
+					<image :src="getimg('/static/images/index2_11.jpg')" mode=""  lazy-load="true"></image>
 					<p>保单管理</p>
 				</view>
 				<view @tap="jump" :data-url="'/pages_fk/search/search?id='+active">
-					<image :src="getimg('/static/images/index2_15.jpg')" mode=""></image>
+					<image :src="getimg('/static/images/index2_15.jpg')" mode=""  lazy-load="true"></image>
 					<p>保险词条</p>
 				</view>
 			</view>

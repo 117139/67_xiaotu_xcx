@@ -246,6 +246,7 @@
 
 			},
 			toCompareDetail() {
+				that.popShow=false
 				let data = {
 					type: type,
 					sid: this.thisSid,
@@ -288,7 +289,7 @@
 				service.P_post(jkurl, datas, header).then(res => {
 					that.btnkg = 0
 					console.log(res)
-					if (res.code == 'S0001') {
+					if (res.code == 'F0007') {
 						that.htmlReset = 0
 						var datas = res.data
 						console.log(typeof datas)

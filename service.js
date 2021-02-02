@@ -12,7 +12,7 @@ const imgurl_w = 'https://www.xiaotubaoxian.com/';
 // const adminurl='https://datixcx.com.aa.800123456.top/admin/';
 // appid:wx4c41cc50c5a53df9
 // appid:wx49a560f7feac0feb   cj
-const imgurl = 'http://192.168.133.161:94/';
+const imgurl = 'http://web.xiaotubaoxian.com/';
 const IPurl=imgurl+'api/'
 /**
  * 请求头
@@ -145,7 +145,7 @@ const jump = function(e) {
 	if(datas.login==true){
 		if(!datas.haslogin){
 			uni.navigateTo({
-				url: '../login/login',
+				url: '/pages/login/login',
 			});
 			return
 		}
@@ -217,6 +217,12 @@ const call=  function (e){
 const wxlogin=function (num){
 	var that =this
 	// 获取用户信息
+	if(num==1){
+		uni.showLoading({
+			mask:true,
+			title:'正在登录'
+		})
+	}
 	uni.getSetting({
 	  success: res => {
 	   console.log(res)
@@ -272,8 +278,58 @@ const wxlogin=function (num){
 												store.commit('login', res.data.data.nickname)
 												
 	                      uni.setStorageSync('loginmsg', res.data.data)
-											
-												
+												//登录产品库
+												uni.login({
+												  success: function (res) {
+														
+												    // 发送 res.code 到后台换取 openId, sessionKey, unionId
+												    var uinfo = userInfo
+												    let data = {
+												      code: res.code
+												    }
+												    let rcode = res.code
+												    console.log(res.code)
+												    uni.request({
+												      url: imgurl_w+'/bx/wechat/login',
+												      data: data,
+												      header : {
+												      	'content-type': 'application/json'
+												      },
+												      dataType: 'json',
+												      method: 'GET',
+												      success(res) {
+																uni.hideLoading()
+												        console.log(res)
+												        /*if (res.data.code == 1) {
+												          console.log('产品库登录成功')
+												          console.log(res.data)
+												          
+												        } else {
+												          
+												          if(res.msg){
+																		uni.showToast({
+																		  icon: 'none',
+																		  title: res.msg,
+																		})
+																	}else{
+																		uni.showToast({
+																		  icon: 'none',
+																		  title: '产品库登录失败',
+																		})
+																	}
+												        }*/
+													
+												      },
+												      fail() {
+																uni.hideLoading()
+												        uni.showToast({
+												          icon: 'none',
+												          title: '产品库登录失败'
+												        })
+												      }
+												    })
+												  }
+												})
 												setTimeout(()=>{
 													event.trigger({
 													    type:'test',

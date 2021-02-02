@@ -9,6 +9,7 @@
 	/* background-image: url(/static/web/images/glbg_01.jpg); */
 	background-repeat: no-repeat;
 	background-position: center;
+	position: relative;
 }
 .gl_box1_bg.data-v-2b6222ce {
 	position: absolute;
@@ -188,6 +189,9 @@
 	font-size: 22rpx;
 }
 .li_go_fx.data-v-2b6222ce {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
@@ -197,11 +201,13 @@
 	        justify-content: space-between;
 	height: 50rpx;
 }
-.li_go_fx ._a.data-v-2b6222ce {
+.li_go_fx view.data-v-2b6222ce {
 	width: 24rpx;
 	height: 16rpx;
+	position: relative;
+	display: block;
 }
-.li_go_fx ._a ._img.data-v-2b6222ce {
+.li_go_fx view ._img.data-v-2b6222ce {
 	width: 100%;
 	height: 100%;
 	display: block;

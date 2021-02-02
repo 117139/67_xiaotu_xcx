@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index1/index1",
     "pages/index/index",
+    "pages/index1/index1",
     "pages/choose/choose",
     "pages/nameSearch/nameSearch",
     "pages/new_html/new_html",
@@ -16,7 +16,8 @@
         "lexicnDetails/lexicnDetails",
         "catalogue/catalogue",
         "policyList/policyList",
-        "policyAdd/policyAdd"
+        "policyAdd/policyAdd",
+        "examine/examine"
       ]
     },
     {
@@ -55,5 +56,6 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  }
+  },
+  "sitemapLocation": "sitemap12.json"
 }
