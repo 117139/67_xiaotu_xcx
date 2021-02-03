@@ -12,7 +12,7 @@ const imgurl_w = 'https://www.xiaotubaoxian.com/';
 // const adminurl='https://datixcx.com.aa.800123456.top/admin/';
 // appid:wx4c41cc50c5a53df9
 // appid:wx49a560f7feac0feb   cj
-const imgurl = 'http://web.xiaotubaoxian.com/';
+const imgurl = 'https://web.xiaotubaoxian.com/';
 const IPurl=imgurl+'api/'
 /**
  * 请求头

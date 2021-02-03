@@ -10,7 +10,7 @@
 					<view class="detaiChoose">
 						<!-- detail[index1] == vals.value ? 'checked':'' -->
 						<block v-for="(vals,index2) in val.value">
-							<text v-if="!val.check" :class="{checked: detail[index1] == vals.value}" @tap="checkdetail(index1,vals.value,index2,false)">
+							<text v-if="!val.check" :class="{checked: detail[index1][0] == vals.value}" @tap="checkdetail(index1,vals.value,index2,false)">
 								{{vals.text}}
 								<!-- {{detail[index1] == vals.value}} -->
 							</text>
@@ -1062,7 +1062,7 @@
 						Vue.set(that.detail[val1], index, val2);
 					}
 				} else {
-					Vue.set(that.detail, val1, val2);
+					Vue.set(that.detail[val1], 0, val2);
 				}
 
 			}
