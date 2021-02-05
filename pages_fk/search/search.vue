@@ -23,7 +23,7 @@
 					<view @tap="sub" class="ss_btn dis_flex aic ju_c" :style="'color:'+datas.search_name">开始检索</view>
 				</view> <view @tap="jump" data-url="/pages_fk/catalogue/catalogue" class="index_list" :style="'background:'+datas.search_dir">目录</view>
 			</view>
-			<view class="s_tit"><span>推荐文章</span></view>
+			<view v-if="newsData.length>0" class="s_tit"><span>推荐文章</span></view>
 			<view class="s_list">
 				<view v-for="(item,index) in newsData" @tap="jump_web(item.jump_link)"  class="oh1">{{item.title}}</view>
 			</view>

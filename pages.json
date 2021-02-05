@@ -94,7 +94,16 @@
 				"enablePullDownRefresh": true
 			}
 
-		}]
+		}    ,{
+                    "path" : "details/details",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
 	}, {
 		"root": "pagesA",
 		"pages": [{

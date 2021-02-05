@@ -10,8 +10,6 @@
 			return {
 				btnkg:0,
 				uuid1:'',
-				wxAppID:'wxf01c3b6a2179e2b4',
-				wxAppSecret:'e969d740b0dbab17abbecf9563b85958'
 			};
 		},
 		onLaunch: function() {
@@ -20,6 +18,7 @@
 			// #ifdef MP-WEIXIN
 			service.wxlogin()
 			// #endif
+		
 			uni.getSystemInfo({
 				success: function(e) {
 					console.log(e);
