@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<scroll-view scroll-y id="wrap" class="wrap" :scroll-into-view="id_str">
 			<view class="box_l" >
 				<view class="w_li" v-for="(item,index) in datas">
@@ -38,7 +39,14 @@
 			}
 		},
 		onLoad(option) {
-			that = this
+			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			that.id=option.id
 			that.getdata()
 		},

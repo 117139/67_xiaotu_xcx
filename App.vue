@@ -18,7 +18,11 @@
 			// #ifdef MP-WEIXIN
 			service.wxlogin()
 			// #endif
-		
+			var logindata=uni.getStorageSync('logindata')
+			if(logindata){
+				that.logindata(logindata)
+				that.login(logindata.nickname)
+			}
 			uni.getSystemInfo({
 				success: function(e) {
 					console.log(e);

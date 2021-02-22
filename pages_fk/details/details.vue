@@ -551,7 +551,7 @@
 			}
 		},
 		onLoad(option) {
-			this.id = option.id
+			this.id = option.id||1
 		},
 		methods: {
 

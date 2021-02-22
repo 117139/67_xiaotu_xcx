@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<z_text></z_text>
 		<div class="box">
 			<h1>保险产品库使用说明</h1>
 			<h2>
@@ -76,11 +77,22 @@
 	</view>
 </template>
 <script>
+	var that
 	export default {
 		data() {
 			return {
 
 			}
+		},
+		onLoad() {
+			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 		},
 		methods: {
 

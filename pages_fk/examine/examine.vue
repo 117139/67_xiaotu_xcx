@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<view class="set_list">
 			<view class="add_li dis_flex ju_b aic" v-for="(item,index) in datas">
 				<view class="selectbox c6 dis_flex aic flex_1">
@@ -42,7 +43,14 @@
 			...mapState(['hasLogin', 'forcedLogin', 'userName', 'loginDatas']),
 		},
 		onLoad(option) {
-			that = this
+			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			if(option.share_id){
 					uni.reLaunch({
 						url:'/pages_fk/policyList/policyList?share_id=' +option.share_id + '&share_look_ids='+option.share_look_ids

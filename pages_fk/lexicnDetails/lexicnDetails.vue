@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<view id="wrap" class="wrap">
 			<view class="ct_top dis_flex aic">{{datas.lexiconData.title}}</view>
 			<view class="ct_list">
@@ -71,7 +72,14 @@
 			}
 		},
 		onLoad(option) {
-			that = this
+			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			that.id=option.id
 			that.getdata()
 		},

@@ -1,6 +1,13 @@
 <template>
 	<view id="wrap" class="wrap">
-		<form @submit="formSubmit" @reset="formReset" class="add_form">
+		<z_text></z_text>
+		<!-- <view v-if="htmlReset==1" class="zanwu" @tap='onRetry'>请求失败，请点击重试</view>
+		<view v-if="htmlReset==-1" class="loading_def">
+			
+			<image class="loading_def_img" src="../../static/images/loading.gif" mode=""></image>
+		</view>
+		<view v-show="htmlReset==0"> -->
+		<form  @submit="formSubmit" @reset="formReset" class="add_form">
 			<view class="add_list">
 				<view class="add_li dis_flex ju_b aic">
 					<view class="c6 add_li_name">投保人</view> <input name="applicant" type="text" v-model="applicant" placeholder="请输入" class="c3 tac flex_1">
@@ -43,7 +50,7 @@
 					<view><span style="color: #1F8FFF;">{{array_qx[index_qx]}}</span> 年</view> 
 					<!-- <input name="fees_day" type="hidden" value="1"> -->
 					
-					<input name="fees_day" :value="array_lb[index_lb]" disabled style="display: none;"> 
+					<input name="fees_day" :value="array_qx[index_qx]" disabled style="display: none;"> 
 					<i class="iconfont icon-next c9"></i>
 				</view>
 				</picker>
@@ -122,6 +129,7 @@
 			</view>
 			<view class="add_footer dis_flex aic ju_c"><button form-type="submit" class=" dis_flex aic ju_c">完成</button></view>
 		</form>
+		<!-- </view> -->
 		<!-- tk -->
 		<view v-if="tk_show1" class="tk_box dis_flex_c">
 			<view class="tk_off"  @tap="tk_show1=false"></view>
@@ -165,6 +173,7 @@
 	export default {
 		data() {
 			return {
+				htmlReset:-1,
 				id:'',
 				applicant:'',    //投保人
 				insured:'',    //被保险人
@@ -206,7 +215,15 @@
 			...mapState(['hasLogin', 'forcedLogin', 'userName', 'loginDatas']),
 		},
 		onLoad(option) {
+			
 			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			that.getdata()
 			if(option.id){
 				that.id=option.id
@@ -266,6 +283,10 @@
 					that.btn_kg = 0
 					console.log(res)
 					if (res.code == 1) {
+						that.htmlReset=0
+						uni.setNavigationBarTitle({
+							title:'编辑保单'
+						})
 						var datas = res.data
 						console.log(typeof datas)
 			
@@ -348,7 +369,7 @@
 						console.log('fees_end_time[1]',that.getindex(that.month_list,jf_time[2]))
 						that.fees_end_time[0]=that.getindex(that.month_list,jf_time[1])
 						that.fees_end_time[1]=that.getindex(that.day_list,jf_time[2])
-						that.fees_day=datas1.fees_day
+						that.index_qx=that.getindex(that.array_qx,datas1.fees_day)   //baozhangqixian
 						that.fees_price=datas1.fees_price
 						that.coverage=datas1.coverage
 						console.log('index_be',that.getindex(that.array_be,datas1.coverage_unit))

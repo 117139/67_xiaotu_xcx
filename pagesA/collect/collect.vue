@@ -1,6 +1,7 @@
 <template>
 	<view class="minh100">
 		
+		<z_text></z_text>
 		<view class="top_box">
 			<view class="getback" @tap="back"><image src="/static/img/back.png" mode="aspectFit"></image>返回</view>
 			<div class="dataNum">共{{Insurances.length}}条</div>
@@ -59,6 +60,13 @@
 		},
 		onLoad() {
 			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			this.getMore();
 		},
 		methods: {

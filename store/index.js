@@ -37,8 +37,12 @@ const store = new Vuex.Store({
 		
 		
 		xcx_status:1,     //0 商家端  1 用户端  2智能安装端
+		v_type:1
 	},
 	mutations: {
+		settype(state, v_type) {
+			state.v_type = v_type || '1';
+		},
 		login(state, userName) {
 			state.userName = userName || '新用户';
 			state.hasLogin = true;

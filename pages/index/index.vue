@@ -45,112 +45,7 @@
 				curDate: {},
 				userInfo: {},
 				cny_num:'',
-				myMainCur: {
-					"name": "CNY",
-					"country": "中国",
-					"rate": 0.0,
-					"amount": 100.0,
-					"en": "RMB",
-					"cn": "人民币",
-					"jp": "香港ドル",
-					"ko": "홍콩 달러"
-				},
-				mySelectCurs: [{
-						"ExtensionData": {},
-						"amount": 0,
-						"cn": "港元",
-						"country": "港元",
-						"en": "Hong Kong Dollar",
-						"jp": "香港ドル",
-						"ko": "홍콩 달러",
-						"name": "HKD",
-						"order": 0,
-						"rate": 88.853
-					},
-					{
-						"ExtensionData": {},
-						"amount": 0,
-						"cn": "韩元",
-						"country": "韩元",
-						"en": "South-Korean Won",
-						"jp": "韓国ウォン",
-						"ko": "대한민국 원",
-						"name": "KRW",
-						"order": 0,
-						"rate": 0.585
-					},
-					{
-						"ExtensionData": {},
-						"amount": 0,
-						"cn": "欧元",
-						"country": "欧元",
-						"en": "Euro",
-						"jp": "ユーロ",
-						"ko": "유로",
-						"name": "EUR",
-						"order": 0,
-						"rate": 733.45
-					}, {
-						"ExtensionData": {},
-						"amount": 0,
-						"cn": "美元",
-						"country": "美元",
-						"en": "US Dollar",
-						"jp": "米国ドル",
-						"ko": "미국 달러",
-						"name": "USD",
-						"order": 0,
-						"rate": 689.15
-					},
-					{
-						"ExtensionData": {},
-						"amount": 0,
-						"cn": "加拿大元",
-						"country": "加拿大元",
-						"en": "Canadian Dollar",
-						"jp": "カナダ ドル",
-						"ko": "캐나다 달러",
-						"name": "CAD",
-						"order": 0,
-						"rate": 512.341
-					},
-					{
-						"ExtensionData": {},
-						"amount": 0,
-						"cn": "俄罗斯卢布",
-						"country": "俄罗斯卢布",
-						"en": "Russian Rouble",
-						"jp": "ロシア ルーブル",
-						"ko": "러시아 루블",
-						"name": "RUB",
-						"order": 0,
-						"rate": 10.741
-					},
-					{
-						"ExtensionData": {},
-						"amount": 0,
-						"cn": "日元",
-						"country": "日元",
-						"en": "Japanese Yen",
-						"jp": "日本円",
-						"ko": "일본 엔",
-						"name": "JPY",
-						"order": 0,
-						"rate": 6.235
-					},
-					{
-						"ExtensionData": {},
-						"amount": 0,
-						"cn": "泰铢",
-						"country": "泰铢",
-						"en": "Thai Baht",
-						"jp": "タイ バーツ",
-						"ko": "태국 바트",
-						"name": "THB",
-						"order": 0,
-						"rate": 19.451
-					}
-				]
+				
 			}
 		},
 		computed: {
@@ -159,7 +54,7 @@
 		onLoad() {
 			that = this
 			that.getbanner()
-
+			
 		},
 		onShow: function() {
 			// 页面显示
@@ -176,6 +71,8 @@
 				// 	}
 				// })
 			}
+			var v_type= that.$store.state.v_type
+			console.log(v_type)
 		},
 		onPullDownRefresh() {
 			that.getbanner()
@@ -184,7 +81,7 @@
 
 		},
 		methods: {
-			...mapMutations(['login', 'logindata', 'logout', 'setplatform', 'setfj_data']),
+			...mapMutations(['login', 'logindata', 'logout', 'setplatform', 'setfj_data','settype']),
 			getxj(num,item){
 				var xj=num
 				xj=xj*item.rate*0.01
@@ -231,8 +128,14 @@
 							datas = JSON.parse(datas)
 						}
 						that.htmlReset = 0
-						that.shell = res.shell
+						// that.shell = res.shell
 						that.banner = datas
+						if(datas[0].jump_url=='/pages_fk/details/details?id=1'){
+							that.settype(1)
+						}else{
+							that.settype(2)
+						}
+						
 						console.log(datas)
 						if (res.shell == 1) {
 							that.curDate = that.formatTime_fuc(new Date())

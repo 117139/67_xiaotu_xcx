@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<view v-if="htmlReset==1" class="zanwu" @tap='onRetry'>请求失败，请点击重试</view>
 		<view v-if="htmlReset==-1" class="loading_def">
 			<image class="loading_def_img" src="../../static/images/loading.gif" mode=""></image>
@@ -115,7 +116,14 @@
 			...mapState(['hasLogin', 'forcedLogin', 'userName', 'loginDatas']),
 		},
 		onLoad() {
-			that = this
+			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			that.onRetry()
 		},
 		onShow() {

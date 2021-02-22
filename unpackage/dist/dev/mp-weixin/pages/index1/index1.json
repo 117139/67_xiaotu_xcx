@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "小兔保",
-  "usingComponents": {}
+  "usingComponents": {
+    "z_text": "/components/z_text/z_text"
+  }
 }

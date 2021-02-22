@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<z_text></z_text>
 		<div id="detail">
 			<div id="getBack">
 				<view class="getback" @tap="back">
@@ -180,6 +181,13 @@
 		},
 		onLoad() {
 			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			type = JSON.parse(uni.getStorageSync('details')).type;
 			ids = JSON.parse(uni.getStorageSync('details')).id;
 			openId = uni.getStorageSync('openId');

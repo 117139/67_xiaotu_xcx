@@ -1,1 +1,1 @@
-<view class="minh100"><web-view src="{{src}}"></web-view></view>
+<view class="minh100"><z_text vue-id="5e954800-1" bind:__l="__l"></z_text><web-view src="https://www.baidu.com"></web-view></view>

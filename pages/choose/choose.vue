@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100" id="choose">
+		<z_text></z_text>
 		<!-- 说明 -->
 		<view class="explain" @tap="jump" data-url="/pagesA/explain/explain">
 			<image :src="getimg('/static/img/explain.png')" mode=""></image>

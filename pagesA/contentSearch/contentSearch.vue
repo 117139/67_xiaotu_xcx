@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<view class="groupBox" v-if="isActive != -1">
 			<view class="title">
 				<text>{{checkText}}</text>
@@ -978,6 +979,13 @@
 		},
 		onLoad() {
 			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 		},
 		onUnload(){
 			this.$store.state.activeName = -1

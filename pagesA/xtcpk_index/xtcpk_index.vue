@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<view id="index">
 			<view>
 				<view class="top_box">
@@ -70,7 +71,14 @@
 			}
 		},
 		onLoad(option) {
-			that = this
+			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			uni.setNavigationBarTitle({
 				title:option.title
 			})

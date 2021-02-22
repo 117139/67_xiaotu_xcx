@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<view id="nameSearch">
 			<view class="namesearchBox">
 				<view class="dis_flex aic ju_b" style="padding: 0 30upx;">
@@ -99,6 +100,16 @@
 		},
 		computed: {
 			...mapState(['hasLogin', 'forcedLogin', 'userName', 'loginDatas']),
+		},
+		onLoad() {
+			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 		},
 		methods: {
 			

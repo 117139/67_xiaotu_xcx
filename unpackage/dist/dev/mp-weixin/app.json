@@ -56,7 +56,7 @@
     }
   },
   "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
-  },
-  "sitemapLocation": "sitemap93.json"
+    "cu-custom": "/colorui/components/cu-custom",
+    "z_text": "/components/z_text/z_text"
+  }
 }

@@ -68,5 +68,16 @@
     },
     "uniStatistics" : {
         "enable" : false
+    },
+    "h5" : {
+        "title" : "小兔保",
+        "router" : {
+            "base" : "/xiaotu_xcx/",
+            "mode" : "hash"
+        },
+        "devServer" : {
+            "https" : false
+        },
+        "domain" : "https://web.xiaotubaoxian.com/"
     }
 }

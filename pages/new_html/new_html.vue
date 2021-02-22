@@ -1,7 +1,8 @@
 <template>
 	<view class="minh100">
-		<!-- <web-view src="https://www.baidu.com"></web-view> -->
-		<web-view  :src="src"></web-view>
+		<z_text></z_text>
+		<web-view src="https://www.baidu.com"></web-view>
+		<!-- <web-view  :src="src"></web-view> -->
 	</view>
 </template>
 
@@ -13,7 +14,6 @@
 			}
 		},
 		onLoad(option) {
-
 			this.src = uni.getStorageSync('web_url') || ''
 			console.log(this.src)
 		},

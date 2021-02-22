@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<view class="gl_box1">
 			<image class="gl_box1_bg" :src="getimg('/static/web/images/glbg_01.jpg')" mode=""></image>
 			<view class="gl_top dis_flex ju_b aic">
@@ -78,7 +79,8 @@
 				policyData:'',
 				size:20,
 				page:1,
-				show_num:0
+				show_num:0,
+				H_tit:''
 			}
 		},
 		computed: {
@@ -86,6 +88,13 @@
 		},
 		onLoad(option) {
 			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			
 			if(option.share_id){
 				that.share_id=option.share_id
@@ -274,6 +283,10 @@
 					that.btn_kg = 0
 					console.log(res)
 					if (res.code == 1) {
+						
+						uni.setNavigationBarTitle({
+							title:'保单管理'
+						})
 						var datas = res.data
 						console.log(typeof datas)
 			

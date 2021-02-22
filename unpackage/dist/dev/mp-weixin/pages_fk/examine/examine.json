@@ -1,5 +1,7 @@
 {
-  "navigationBarTitleText": "保单管理",
+  "navigationBarTitleText": "",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "z_text": "/components/z_text/z_text"
+  }
 }

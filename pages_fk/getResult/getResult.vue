@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<view id="wrap" class="wrap" style="padding-top: 40upx;">
 			<view class="ss_box dis_flex aic">
 				<i class="iconfont icon-sousuo1"></i> 
@@ -49,6 +50,13 @@
 		
 		onLoad(option) {
 			that=this
+			// console.log(that.$store.state.v_type==1)
+			if(that.$store.state.v_type==1){
+				uni.redirectTo({
+					url:'/pages_fk/details/details'
+				})
+				return
+			}
 			that.search_key=option.title
 			that.index=option.type=='全文'?0:1
 			that.onRetry()

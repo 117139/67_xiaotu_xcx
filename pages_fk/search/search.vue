@@ -1,5 +1,6 @@
 <template>
 	<view class="minh100">
+		<z_text></z_text>
 		<view id="wrap" class="wrap">
 			<view class="s_top dis_flex ju_b">
 				<view></view> 
@@ -63,6 +64,13 @@
 		},
 		onLoad() {
 			that=this
+			// console.log(that.$store.state.v_type==1)
+			// if(that.$store.state.v_type==1){
+			// 	uni.redirectTo({
+			// 		url:'/pages_fk/details/details'
+			// 	})
+			// 	return
+			// }
 			that.getdata()
 		},
 		methods: {
