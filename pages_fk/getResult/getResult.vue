@@ -13,7 +13,7 @@
 				<view @tap="onRetry" class="ss_btn dis_flex aic ju_c">开始检索</view>
 			</view>
 			<view class="s_list">
-				<view @tap="jump" v-for="(item,index) in datas" :data-url="'/pages_fk/lexicnDetails/lexicnDetails?id='+item.id">
+				<view @tap="jump" v-for="(item,index) in datas"  :data-login='true' :data-haslogin='hasLogin' :data-url="'/pages_fk/lexicnDetails/lexicnDetails?id='+item.id">
 					<view class="d1 oh1">{{item.title}}</view>
 				</view>
 				<view v-if="datas.length==0" class="zanwu">暂无数据</view>
@@ -60,6 +60,10 @@
 			that.search_key=option.title
 			that.index=option.type=='全文'?0:1
 			that.onRetry()
+		},
+		computed:{
+			
+				...mapState(['hasLogin']),
 		},
 		methods: {
 			bindPickerChange(e) { //投保人

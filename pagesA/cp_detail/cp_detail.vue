@@ -163,8 +163,16 @@
 			// 	})
 			// 	return
 			// }
+			if(uni.getStorageSync('details')){
+				console.log("uni.getStorageSync('details')")
+				console.log(uni.getStorageSync('details'))
 			type = JSON.parse(uni.getStorageSync('details')).type;
-			ids = JSON.parse(uni.getStorageSync('details')).id;
+			}
+			if(uni.getStorageSync('details')){
+				
+					console.log("uni.getStorageSync('details')")
+				ids = JSON.parse(uni.getStorageSync('details')).id;
+			}
 			openId = uni.getStorageSync('openId');
 
 			that.getdata()
@@ -194,7 +202,7 @@
 					return
 				}
 				that.btnkg = 1
-				var serchData = JSON.parse(uni.getStorageSync('detailData'));
+				// var serchData = JSON.parse(uni.getStorageSync('detailData'));
 				let datas = {
 					fid: "S0007",
 					type: type,

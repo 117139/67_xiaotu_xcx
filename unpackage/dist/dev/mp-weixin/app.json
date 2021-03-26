@@ -58,5 +58,6 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom",
     "z_text": "/components/z_text/z_text"
-  }
+  },
+  "sitemapLocation": "sitemap72.json"
 }

@@ -140,7 +140,9 @@ const gologin = function() {
 const jump = function(e) {
 	// console.log(e.currentTarget.dataset.type)
 	var datas=e.currentTarget.dataset
+	console.log(datas)
 	console.log(datas.login==true)
+	console.log(datas.haslogin)
 	
 	if(datas.login==true){
 		if(!datas.haslogin){
